@@ -1,4 +1,12 @@
-$primary : firebrick;
+$primary: firebrick;
+$white: white;
 .testSASS {
-    color: $primary
+  color: $primary;
+}
+a {
+  color: $white;
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
 }

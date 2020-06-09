@@ -5,16 +5,22 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-  /* validate({ params, redirect, store }) {
-   
-    if (this.database.filter(data => data.path == params.productId)) {
-      return true;
-    } else {
-      return redirect("/404");
-    }
-    
-  }*/
+  data() {
+    return {
+      routes: []
+    };
+  },
+  computed: mapState({
+    ...mapState("articles", {
+      bikes: state => state.bikes,
+      watches: state => state.watches,
+      sneakers: state => state.sneakers
+    })
+  }),
+  
+  middleware: "routeChecker"
 };
 </script>
 

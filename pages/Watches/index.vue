@@ -4,7 +4,7 @@
     <div class="row">
       <ul class="col" v-for="categ in categ1" :key="categ.watchesId">
         <div class="card shadow-sm p-3 mb-5 bg-light rounded">
-          <nuxt-link class="text-dark" :to="`/Watches/${categ.watchesId}`">{{categ.name}}</nuxt-link>
+          <nuxt-link rel="preload" class="text-dark" :to="`/Watches/${categ.watchesId}`">{{categ.name}}</nuxt-link>
         </div>
       </ul>
     </div>
