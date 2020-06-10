@@ -1,4 +1,7 @@
+
+
 module.exports = {
+  
   mode: "universal",
   /*
    ** Headers of the page
@@ -95,54 +98,19 @@ module.exports = {
       }
     }
   },
-  /*generate: {
+  generate: {
     routes: () => {
-      let slugs = [
-        { slug: "Giant" },
-        { slug: "Giant1" },
-        { slug: "Giant2" },
-        { slug: "Giant3" },
-        { slug: "Trek" },
-        { slug: "Trek1" },
-        { slug: "Trek2" },
-        { slug: "Trek3" },
-        { slug: "Scott" },
-        { slug: "Scott1" },
-        { slug: "Scott2" },
-        { slug: "Scott3" },
-        { slug: "Supreme" },
-        { slug: "Supreme1" },
-        { slug: "Supreme2" },
-        { slug: "Supreme3" },
-        { slug: "Jordans" },
-        { slug: "Jordans1" },
-        { slug: "Jordans2" },
-        { slug: "Jordans3" },
-        { slug: "Vans" },
-        { slug: "Vans1" },
-        { slug: "Vans2" },
-        { slug: "Vans3" },
-        { slug: "Rolex" },
-        { slug: "Rolex1" },
-        { slug: "Rolex2" },
-        { slug: "Rolex3" },
-        { slug: "Garmin" },
-        { slug: "Garmin1" },
-        { slug: "Garmin2" },
-        { slug: "Garmin3" },
-        { slug: "G-Shock" },
-        { slug: "G-Shock1" },
-        { slug: "G-Shock2" },
-        { slug: "G-Shock3" }
-      ];
-      return slugs.map(elt => {
-        return {
-          route: `/${elt.slug}`
-        };
+      return axios.get("http://localhost:8080/products").then(res => {
+        return res.data.map(elt => {
+          return {
+            route: `/${elt.slug}`,
+            payload: elt
+          };
+        });
       });
     }
-  }*/
+  },
   server: {
-    port: 5000
+    port: 5050
   }
 };

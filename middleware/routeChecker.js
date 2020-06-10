@@ -1,15 +1,11 @@
-export default function({ store, redirect, route }) {
-  let bikes = store.getters["articles/getBikes"];
-  let watches = store.getters["articles/getWatches"];
-  let sneakers = store.getters["articles/getSneakers"];
-  let temp = [...bikes, ...watches, ...sneakers].map(elt => elt.value);
-  let products = temp.reduce((a, b) => a.concat(b), []);
-  let checker = products.filter(
-    elt => elt.productId === route.params.productId
-  );
-  if (checker.length !== 0) {
-    return true;
-  } else {
-    return redirect("/404");
-  }
+import axios from "axios";
+export default function({ redirect, route }) {
+  return axios.get("http://localhost:8080/products").then(res => {
+    let checker = res.data.filter(elt => elt._id === route.params.id);
+    if (checker.length !== 0) {
+      return true;
+    } else {
+      return redirect("/404");
+    }
+  });
 }
