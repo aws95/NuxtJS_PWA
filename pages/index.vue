@@ -10,10 +10,15 @@
 
 <script>
 import Logo from "~/components/Logo.vue";
-
+import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     Logo
+  },
+  methods: {
+    dispatch() {
+      this.$store.dispatch('articles/getproducts')
+    }
   }
 };
 </script>

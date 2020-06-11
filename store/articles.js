@@ -8,15 +8,14 @@ export const getters = {
   }
 };
 export const mutations = {
-  SET_IP: (state, payload) => {
+  SET_PRODUCTS: (state, payload) => {
     state.products = payload;
   }
 };
 
-/*export const actions = () => ({
-  async getIP({ commit }) {
-    const ip = await this.$axios.$get("http://localhost:8080/products");
-    commit("SET_IP", ip);
+export const actions = {
+  async getproducts({ commit }) {
+    const ip = await this.$axios.$get("http://localhost:8880/products");
+    commit("SET_PRODUCTS", ip);
   }
-});
-*/ 
+};

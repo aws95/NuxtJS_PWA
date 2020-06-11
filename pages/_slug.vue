@@ -8,28 +8,25 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import axios from "axios";
 export default {
   data() {
+    this.routeSlug = this.$route.params.slug;
     return {
       product: []
     };
   },
-  async asyncData({ params, payload }) {
-    if (payload) {
-      return {
-        product: payload
-      };
-    } else {
-      return await axios
-        .get(`http://localhost:8080/products/${params.id}`)
-        .then(res => {
-          return {
-            product: res.data
-          };
-        });
-    }
+  created() {
+    this.$store.dispatch("articles/getproducts");
+    this.product = this.getProducts.find(
+      product => product.slug == this.routeSlug
+    );
+  },
+  computed: {
+    ...mapGetters({
+      getProducts: "articles/getProducts"
+    })
   },
   middleware: "routeChecker"
 };

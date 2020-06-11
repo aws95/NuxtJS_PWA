@@ -16,12 +16,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
-  async fetch({ $axios, store }) {
-    const ip = await $axios.get("http://localhost:8080/products");
-    store.commit("SET_IP", ip);
-  },
   data() {
     this.watch = this.$route.params.watchesId;
     return {
@@ -29,10 +25,16 @@ export default {
     };
   },
   created() {
-    this.temp = this.$store.state.products.data.filter(
+    this.$store.dispatch("articles/getproducts");
+    this.temp = this.getProducts.filter(
       categ => categ.subcategory == this.watch
     );
     this.products = this.temp;
+  },
+  computed: {
+    ...mapGetters({
+      getProducts: "articles/getProducts"
+    })
   }
 };
 </script>
