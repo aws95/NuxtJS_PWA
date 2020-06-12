@@ -1,7 +1,5 @@
 
-
 module.exports = {
-  
   mode: "universal",
   /*
    ** Headers of the page
@@ -100,7 +98,7 @@ module.exports = {
   },
   generate: {
     routes: () => {
-      return axios.get("http://localhost:8080/products").then(res => {
+      return axios.get("http://localhost:8880/products").then(res => {
         return res.data.map(elt => {
           return {
             route: `/${elt.slug}`,

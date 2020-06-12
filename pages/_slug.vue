@@ -8,8 +8,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import axios from "axios";
+import { mapGetters } from "vuex";
 export default {
   data() {
     this.routeSlug = this.$route.params.slug;
@@ -18,14 +17,13 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch("articles/getproducts");
     this.product = this.getProducts.find(
       product => product.slug == this.routeSlug
     );
   },
   computed: {
     ...mapGetters({
-      getProducts: "articles/getProducts"
+      getProducts: "getProducts"
     })
   },
   middleware: "routeChecker"

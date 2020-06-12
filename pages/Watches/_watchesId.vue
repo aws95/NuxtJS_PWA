@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters} from "vuex";
 export default {
   data() {
     this.watch = this.$route.params.watchesId;
@@ -25,7 +25,6 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch("articles/getproducts");
     this.temp = this.getProducts.filter(
       categ => categ.subcategory == this.watch
     );
@@ -33,7 +32,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getProducts: "articles/getProducts"
+      getProducts: "getProducts"
     })
   }
 };

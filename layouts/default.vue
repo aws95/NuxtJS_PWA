@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Navbar />
+    <no-ssr>
+      <Navbar />
+    </no-ssr>
     <nuxt />
   </div>
 </template>
